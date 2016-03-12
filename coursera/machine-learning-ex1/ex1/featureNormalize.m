@@ -10,7 +10,6 @@ X_norm = X;
 mu = zeros(1, size(X, 2));
 sigma = zeros(1, size(X, 2));
 
-% ====================== YOUR CODE HERE ======================
 % Instructions: First, for each feature dimension, compute the mean
 %               of the feature and subtract it from the dataset,
 %               storing the mean value in mu. Next, compute the 
@@ -26,14 +25,21 @@ sigma = zeros(1, size(X, 2));
 % Hint: You might find the 'mean' and 'std' functions useful.
 %       
 
+% initialize mu & sigma vectors
+for n=1:length(mu)
+	mu(n) = mean(X(:, n));
+	sigma(n) = std(X(:, n));
+	
+	if(sigma(n) ~= 0)
+		x = X(:, n);
+		X_norm(:, n) = (x - mu(n)) / sigma(n);
+	else
+		X_norm(:, n) = ones(size(X_norm, 1) ,1); % no std deviation
+	end
+end
 
+% append zeroth feature
+% X_norm = [ones(size(X_norm, 1), 1), X_norm];
 
-
-
-
-
-
-
-% ============================================================
 
 end
