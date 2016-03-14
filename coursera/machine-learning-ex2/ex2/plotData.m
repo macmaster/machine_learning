@@ -12,13 +12,18 @@ figure; hold on;
 %               examples and 'ko' for the negative examples.
 %
 
+% split admission data into yes and no
+positive = find(y==1);
+negative = find(y==0);
 
+posX = X(positive, [1, 2]);
+negX = X(negative, [1, 2]);
 
+% plot Admission data
+plot(posX(:,1), posX(:,2), 'r+', 'LineWidth', 2);
+plot(negX(:,1), negX(:,2), 'ko', 'MarkerFaceColor', 'y', 'MarkerSize', 6);
 
-
-
-
-
+disp("hello world!");
 
 % =========================================================================
 

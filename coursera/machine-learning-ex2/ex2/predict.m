@@ -15,8 +15,21 @@ p = zeros(m, 1);
 %               You should set p to a vector of 0's and 1's
 %
 
+% compute hypothesis
+p = X * theta;
 
+for n=1:length(p)
+	
+	% no admit
+	if p(n) < 0
+		p(n) = 0;
+	
+	% yesadmit
+	else
+		p(n) = 1;
+	end
 
+end
 
 
 
