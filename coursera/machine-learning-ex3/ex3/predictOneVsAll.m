@@ -30,13 +30,21 @@ X = [ones(m, 1) X];
 %       for each row.
 %       
 
+% debug stats
+disp("all theta size");
+disp(size(all_theta));
+disp("x size");
+disp(size(X));
 
+% results vector
+y = sigmoid(all_theta * X');
 
-
-
-
+% prediction vector 
+[my, imy] = max(y);
+p = imy';
 
 % =========================================================================
+
 
 
 end
