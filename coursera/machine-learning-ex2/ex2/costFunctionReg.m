@@ -18,8 +18,27 @@ grad = zeros(size(theta));
 %               derivatives of the cost w.r.t. each parameter in theta
 
 
+% cost sum terms
+hyp = sigmoid(X * theta);
+term1 = (-y' * log(hyp));
+term2 = (-(1 - y)' * log(1 - hyp));
+jsum = (term1 + term2) / m;
+
+% regulariaztion term
+theta(1) = 0;
+reg = lambda * (theta' * theta);
+rsum = reg / (2 * m);
+
+% cost function
+J = jsum + rsum;
 
 
+% gradient terms
+diff = hyp - y;
+gsum = (diff' * X) / m;
+
+% gradient with regularization
+grad = gsum' + (lambda / m) * theta;
 
 
 % =============================================================
