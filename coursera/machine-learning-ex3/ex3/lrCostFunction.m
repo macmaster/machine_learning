@@ -36,12 +36,28 @@ grad = zeros(size(theta));
 %           grad = grad + YOUR_CODE_HERE (using the temp variable)
 %
 
+% logistic regression hypothesis
+hyp = sigmoid(X * theta);
 
+% cost function terms
+term1 = (-y' * log(hyp));
+term2 = (-(1 - y)' * log(1 - hyp));
+jsum = (term1 + term2) / m;
 
+% gradient terms
+diff = (hyp - y);
+gsum = (X' * diff) / m;
 
+% don't regularize theta bias
+theta(1) = 0;
 
+% regularlize cost
+reg = (lambda / (2 * m)) * theta' * theta;
+J = jsum + reg;
 
-
+% regularize gradient
+reg = (lambda / m) * theta;
+grad = gsum + reg;
 
 
 
