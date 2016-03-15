@@ -21,12 +21,25 @@ p = zeros(size(X, 1), 1);
 %       can use max(A, [], 2) to obtain the max for each row.
 %
 
+% Prepare input layer
+X = [ones(m, 1), X]';
 
 
+% Hidden Layer 2 activation
+A2 = (Theta1 * X)';
+A2 = sigmoid(A2);
 
+% bias hidden layer 2
+n = size(A2, 1);
+A2 = [ones(n, 1), A2]';
 
+% Output Layer 3 activation
+A3 = (Theta2 * A2);
+A3 = sigmoid(A3);
 
-
+% Predict from Output Layer 
+[mh, max_index] = max(A3);
+p = (max_index)';
 
 
 % =========================================================================
